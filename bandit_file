@@ -1,0 +1,336 @@
+----------------------------------------------------------------------------------
+ -- SELECT * FROM db1.startup;
+-- How many startups are there in Pune City?
+-- select count(1) from db1.startup where city like 'pune%';
+
+-- How many startups in Pune got their Seed/ Angel Funding?
+-- select count(1) from db1.startup where city='pune' and InvestmentnType= 'Seed/ Angel Funding'
+
+-- What are the top 5 Industry_Vertical which has the highest number of startups in India?
+/* select d.total,Industry_Vertical from 
+(select count(Industry_Vertical) as total,Industry_Vertical  from db1.startup  where city in
+(
+'Bengaluru',
+'Gurgaon',
+'Bengaluru',
+'New Delhi',
+'Mumbai',
+'Chennai',
+'Gurgaon',
+'Pune'
+) group by Industry_Vertical) d
+order by d.total desc limit 5;
+*/
+
+-- Find the top Investor(by amount) of each year.
+
+
+
+
+-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+level 0 ------------------------------------------------------------
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+password - bandit0
+
+--------------------------------------------------------------------------
+
+
+level 1 ------------------
+ls
+readme
+cat readme # (then get password below)
+NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+---------------------------------------------------
+then we do
+
+exit or open new terminal
+
+then 
+
+level 2 -------------------------------------------------------
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+password is - NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+
+ls
+
+-
+
+cat ./- or cat /home/bandit/-
+then got password for bandit2
+
+ssh bandit2@bandit.labs.overthewire.org -p 2220
+rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+
+--------------------------------------------------------------------------------------
+
+exit 
+
+
+ssh bandit3@bandit.labs.overthewire.org -p 2220
+password - aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+
+level 3 -----------------------------------------------------------
+
+ls
+inhere
+cd inhere
+ls -a (for hidden file)
+cat .hidden
+ then got password
+exit
+login level 4  -------------------------------
+
+ssh bandit4@bandit.labs.overthewire.org -p 2220
+2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+------------------------------------------------
+ls
+ inhere
+ cd inhrere
+ ls
+ show many -file file00 ---file09
+ file (this shows that file what type is it)
+ 
+ file ./-file00
+ 
+file ./-file01
+
+up to file ./-file09
+
+takes too many time then we use
+
+file ./-*
+
+then we got ascii text in file07
+file ./-file07
+got pass
+
+level 5 ----------------------------------------------------
+ssh bandit5@bandit.labs.overthewire.org -p 2220
+passs   --  lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+
+ls
+inhere
+cd inhere
+then got  many below folder then find file for password with condition (human readable, 1033 size, not executable)
+maybehere00  maybehere04  maybehere08  maybehere12  maybehere16
+maybehere01  maybehere05  maybehere09  maybehere13  maybehere17
+maybehere02  maybehere06  maybehere10  maybehere14  maybehere18
+maybehere03  maybehere07  maybehere11  maybehere15  maybehere19
+
+cd ..
+
+find -size 1033c -readable ! -executable
+cat ./maybehere07/.file2
+--------------------------------------------------------------
+level 6 ---------------------------------------------------------------------
+ssh bandit6@bandit.labs.overthewire.org -p 2220
+P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+
+
+cd /
+find -size 33c -user bandit7 -group bandit6
+
+and find not permission denied file like (./var/lib/dpkg/info/bandit7.password)
+cat ./var/lib/dpkg/info/bandit7.password  
+
+z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+
+---------------------------------------------------
+level 7 ------------------------
+ssh bandit7@bandit.labs.overthewire.org -p 2220
+z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+
+
+ls
+data.txt
+grep millionth data.txt
+TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+
+
+level 8 --------------------
+ssh bandit8@bandit.labs.overthewire.org -p 2220
+TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+
+
+ls
+data.txt
+sort data.txt | uniq -u
+
+EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+
+level 9 ----------------------------------------------------
+
+ssh bandit9@bandit.labs.overthewire.org -p 2220
+EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+
+ls
+data.txt
+cat data.txt
+ then unreadable word bi aa raha he
+ so use string
+ 
+ string data.txt -- it select only readsable data only
+
+G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+
+
+level 10 -----------------------------------------
+
+ssh bandit10@bandit.labs.overthewire.org -p 2220
+G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+
+ls
+data.txt
+
+cat data.txt
+
+VGhlIHBhc3N3b3JkIGlzIDZ6UGV6aUxkUjJSS05kTllGTmI2blZDS3pwaGxYSEJNCg==
+
+last me =,== mean base64 he ye then we need decode
+
+base64 -d data.txt  -- (-d mean decode)
+
+or
+
+cat data.txt | base64 --decode
+
+6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+
+level 11 -------------------------------
+
+
+ssh bandit11@bandit.labs.overthewire.org -p 2220
+6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+
+ls
+data.txt
+cat data.txt
+ got  -- Gur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEi
+
+using rotate 13 algorithm
+
+cat data.txt | tr a-zA-Z n-za-mN-ZA-N
+
+
+JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+
+level 12 --------------------------------------------------
+
+
+ssh bandit12@bandit.labs.overthewire.org -p 2220
+JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+
+cd  /tmp
+mkdir level12
+cd level12
+cp ~/data.txt
+cat data.txt | head
+
+xxd -r data.txt n1   --- haxdump  convert  and reverse -r mean reverse data.txt 
+to n ,  me revese ho jayega
+
+file n1
+mv n1 n1.gz
+gzip -d n1.gz
+ls
+
+mv n1 n1.bz2
+bzip2 -d n1.bz2
+
+
+mv n1 n1.gz
+gzip -d n1.gz
+file n1 then see file type is changed
+
+mv n1 n1.tar
+tar -xf n1.tar
+ls
+
+
+tar -xf data5.bin
+ls
+
+file data6.bin
+bzip2 -d data6.bin
+ls
+
+file data6.bin.out
+tar -xf data6.bin.out   --- for unarchive
+file data8.bin
+mv data8.bin data8.gz
+gzip -d data8.gz
+file data8
+cat data8
+
+ 
+ 
+ 
+ wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+
+level 13 -------------------------------
+
+ssh bandit13@bandit.labs.overthewire.org -p 2220
+wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+
+sh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+
+cat /etc/bandit_pass/bandit14
+fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+level 14 ---------------------------------------------------
+
+ssh bandit14@bandit.labs.overthewire.org -p 2220
+fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+
+nc localhost 30000
+fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+
+then we get level 15 password
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+
+
+level 15 --------------------------
+ssh bandit15@bandit.labs.overthewire.org -p 2220
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+
+ncat --ssl localhost 30001
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+
+get level 16 password 
+JQttfApK4SeyHwDlI9SXGR50qclOAil1
+
